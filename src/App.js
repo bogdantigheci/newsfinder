@@ -17,6 +17,7 @@ const App = () => {
     axios
       .get(`https://hn.algolia.com/api/v1/search?query=${query}`)
       .then((res) => {
+        console.log(res.data.hits);
         setNews(res.data.hits);
         setLoading(false);
       })
@@ -34,23 +35,25 @@ const App = () => {
   };
 
   return (
-    <div className="container-fluid mx-auto p-4 bg-blue-lightest  shadow-lg rounded">
-      <h1 className="text-grey-darkest font-thin text-center ">News search</h1>
-      <form onSubmit={handleSearch} className="mb-2 text-center content-center">
+    <div className="container mt-5 mx-auto p-4 bg-blue-lightest  shadow-lg rounded">
+      <h1 className="text-grey-darkest font-bold text-center mb-2">
+        Latest News
+      </h1>
+      <form onSubmit={handleSearch} className="mb-5 text-center content-center">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           ref={searchInputRef}
-          className="border p-1 rounded"
+          className="border p-2 rounded"
         />
-        <button type="submit" className="bg-green rounded m-1 p-1">
+        <button type="submit" className="bg-green rounded m-1 p-2">
           Search news
         </button>
         <button
           type="button"
           onClick={handleClearSearch}
-          className="bg-teal p-1 rounded"
+          className="bg-teal p-2 rounded"
         >
           Clear search
         </button>
@@ -58,13 +61,14 @@ const App = () => {
       {!loading ? (
         <ul className="list-reset leading-normal">
           {news.map((n) => (
-            <li
-              key={n.objectID}
-              className="text-indigo-dark hover:text-indigo-darkest"
-            >
-              <a href={n.url} className="no-underline">
+            <li key={n.objectID}>
+              <a
+                href={n.url}
+                className="no-underline text-indigo-dark hover:text-indigo-darkest"
+              >
                 {n.title}
-              </a>
+              </a>{' '}
+              - {n.num_comments} comments
             </li>
           ))}
         </ul>
