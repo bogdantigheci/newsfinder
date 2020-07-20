@@ -62,7 +62,9 @@ const App = () => {
               key={n.objectID}
               className="text-indigo-dark hover:text-indigo-darkest"
             >
-              <a href={n.url}>{n.title}</a>
+              <a href={n.url} className="no-underline">
+                {n.title}
+              </a>
             </li>
           ))}
         </ul>
