@@ -8,9 +8,9 @@ const App = () => {
   const [error, setError] = useState(null);
   const searchInputRef = useRef();
 
-  useEffect(() => {
-    getNews();
-  }, []);
+  //prettier-ignore
+  // eslint-disable-next-line
+  useEffect(() => { getNews();}, []);
 
   const getNews = () => {
     setLoading(true);
