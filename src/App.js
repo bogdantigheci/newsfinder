@@ -8,9 +8,9 @@ const App = () => {
   const [error, setError] = useState(null);
   const searchInputRef = useRef();
 
-  useEffect(() => {
-    getNews();
-  }, []);
+  //prettier-ignore
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { getNews();}, []);
 
   const getNews = () => {
     setLoading(true);
