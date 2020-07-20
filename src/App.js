@@ -9,7 +9,7 @@ const App = () => {
   const searchInputRef = useRef();
 
   //prettier-ignore
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line
   useEffect(() => { getNews();}, []);
 
   const getNews = () => {
